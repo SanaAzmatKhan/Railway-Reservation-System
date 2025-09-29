@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Booking_Detail">
+    <Key>
+      <PropertyRef Name="Booking_ID" />
+    </Key>
+    <Property Name="User_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Seat_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="No_of_seats" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Route_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Booking_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Departure_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Ticket_no" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Coach_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Train_no" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Booking_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fare_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Coach_Info" Relationship="Self.FK_Booking_Detail_Coach_Class" FromRole="Booking_Detail" ToRole="Coach_Info" />
+    <NavigationProperty Name="Fare_Detail" Relationship="Self.FK_Booking_Detail_Fare_Detail" FromRole="Booking_Detail" ToRole="Fare_Detail" />
+    <NavigationProperty Name="Route_Detail" Relationship="Self.FK_Booking_Detail_Route_Detail" FromRole="Booking_Detail" ToRole="Route_Detail" />
+    <NavigationProperty Name="Seat_Detail" Relationship="Self.FK_Booking_Detail_Seat_Detail" FromRole="Booking_Detail" ToRole="Seat_Detail" />
+    <NavigationProperty Name="Train_Info" Relationship="Self.FK_Booking_Detail_Train_Info" FromRole="Booking_Detail" ToRole="Train_Info" />
+    <NavigationProperty Name="User_Info" Relationship="Self.FK_Booking_Detail_User_Info" FromRole="Booking_Detail" ToRole="User_Info" />
+    <NavigationProperty Name="Payments" Relationship="Self.FK_Payment_Booking_Detail" FromRole="Booking_Detail" ToRole="Payment" />
+  </EntityType>
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="Class_ID" />
+    </Key>
+    <Property Name="Class_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Class_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Coach_Info" Relationship="Self.FK_Coach_Info_Class" FromRole="Class" ToRole="Coach_Info" />
+    <NavigationProperty Name="Fare_Detail" Relationship="Self.FK_Fare_Detail_Coach_Classes" FromRole="Class" ToRole="Fare_Detail" />
+  </EntityType>
+  <EntityType Name="Coach_Info">
+    <Key>
+      <PropertyRef Name="Coach_ID" />
+    </Key>
+    <Property Name="Coach_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Coach_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Class_ID" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="Booking_Detail" Relationship="Self.FK_Booking_Detail_Coach_Class" FromRole="Coach_Info" ToRole="Booking_Detail" />
+    <NavigationProperty Name="Class" Relationship="Self.FK_Coach_Info_Class" FromRole="Coach_Info" ToRole="Class" />
+  </EntityType>
+  <EntityType Name="Fare_Detail">
+    <Key>
+      <PropertyRef Name="Fare_ID" />
+    </Key>
+    <Property Name="Route_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Train_no" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Class_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Fare" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Cancel_per" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Fare_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Booking_Detail" Relationship="Self.FK_Booking_Detail_Fare_Detail" FromRole="Fare_Detail" ToRole="Booking_Detail" />
+    <NavigationProperty Name="Class" Relationship="Self.FK_Fare_Detail_Coach_Classes" FromRole="Fare_Detail" ToRole="Class" />
+    <NavigationProperty Name="Route_Detail" Relationship="Self.FK_Fare_Detail_Route_Detail" FromRole="Fare_Detail" ToRole="Route_Detail" />
+    <NavigationProperty Name="Train_Info" Relationship="Self.FK_Fare_Detail_Train_Info" FromRole="Fare_Detail" ToRole="Train_Info" />
+  </EntityType>
+  <EntityType Name="FeedBack">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Phone" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="User_Info" Relationship="Self.FK_Login_User_Info" FromRole="Login" ToRole="User_Info" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="Payment_ID" />
+    </Key>
+    <Property Name="Booking_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Atm_card_no" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="PNR_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Payment_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Booking_Detail" Relationship="Self.FK_Payment_Booking_Detail" FromRole="Payment" ToRole="Booking_Detail" />
+  </EntityType>
+  <EntityType Name="Route_Detail">
+    <Key>
+      <PropertyRef Name="Route_ID" />
+    </Key>
+    <Property Name="Route_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Route_from" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Route_To" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Distance__Km_" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Booking_Detail" Relationship="Self.FK_Booking_Detail_Route_Detail" FromRole="Route_Detail" ToRole="Booking_Detail" />
+    <NavigationProperty Name="Fare_Detail" Relationship="Self.FK_Fare_Detail_Route_Detail" FromRole="Route_Detail" ToRole="Fare_Detail" />
+    <NavigationProperty Name="Train_Route" Relationship="Self.FK_Train_Route_Route_Detail" FromRole="Route_Detail" ToRole="Train_Route" />
+  </EntityType>
+  <EntityType Name="Schdule">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Train_no" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Arrival_Time" Type="Time" Precision="7" />
+    <Property Name="Departure_Time" Type="Time" Precision="7" />
+    <Property Name="Days" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Station_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Station_Detail" Relationship="Self.FK_Schdule_Station_Detail" FromRole="Schdule" ToRole="Station_Detail" />
+    <NavigationProperty Name="Train_Info" Relationship="Self.FK_Schdule_Train_Info" FromRole="Schdule" ToRole="Train_Info" />
+  </EntityType>
+  <EntityType Name="Seat_Detail">
+    <Key>
+      <PropertyRef Name="Seat_ID" />
+    </Key>
+    <Property Name="Seat_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Seat_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Booking_Detail" Relationship="Self.FK_Booking_Detail_Seat_Detail" FromRole="Seat_Detail" ToRole="Booking_Detail" />
+  </EntityType>
+  <EntityType Name="Station_Detail">
+    <Key>
+      <PropertyRef Name="Station_ID" />
+    </Key>
+    <Property Name="Station_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Station_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Station_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Railway_Division" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Schdules" Relationship="Self.FK_Schdule_Station_Detail" FromRole="Station_Detail" ToRole="Schdule" />
+  </EntityType>
+  <EntityType Name="Train_Info">
+    <Key>
+      <PropertyRef Name="Train_no" />
+    </Key>
+    <Property Name="Train_no" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Train_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Booking_Detail" Relationship="Self.FK_Booking_Detail_Train_Info" FromRole="Train_Info" ToRole="Booking_Detail" />
+    <NavigationProperty Name="Fare_Detail" Relationship="Self.FK_Fare_Detail_Train_Info" FromRole="Train_Info" ToRole="Fare_Detail" />
+    <NavigationProperty Name="Schdules" Relationship="Self.FK_Schdule_Train_Info" FromRole="Train_Info" ToRole="Schdule" />
+    <NavigationProperty Name="Train_Route" Relationship="Self.FK_Train_Route_Train_Info" FromRole="Train_Info" ToRole="Train_Route" />
+  </EntityType>
+  <EntityType Name="Train_Route">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Train_no" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Route_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Route_Detail" Relationship="Self.FK_Train_Route_Route_Detail" FromRole="Train_Route" ToRole="Route_Detail" />
+    <NavigationProperty Name="Train_Info" Relationship="Self.FK_Train_Route_Train_Info" FromRole="Train_Route" ToRole="Train_Info" />
+  </EntityType>
+  <EntityType Name="User_Info">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CNIC" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Phone" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Booking_Detail" Relationship="Self.FK_Booking_Detail_User_Info" FromRole="User_Info" ToRole="Booking_Detail" />
+    <NavigationProperty Name="Login" Relationship="Self.FK_Login_User_Info" FromRole="User_Info" ToRole="Login" />
+  </EntityType>
+  <Association Name="FK_Booking_Detail_Coach_Class">
+    <End Role="Coach_Info" Type="Self.Coach_Info" Multiplicity="1" />
+    <End Role="Booking_Detail" Type="Self.Booking_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coach_Info">
+        <PropertyRef Name="Coach_ID" />
+      </Principal>
+      <Dependent Role="Booking_Detail">
+        <PropertyRef Name="Coach_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_Detail_Fare_Detail">
+    <End Role="Fare_Detail" Type="Self.Fare_Detail" Multiplicity="1" />
+    <End Role="Booking_Detail" Type="Self.Booking_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fare_Detail">
+        <PropertyRef Name="Fare_ID" />
+      </Principal>
+      <Dependent Role="Booking_Detail">
+        <PropertyRef Name="Fare_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_Detail_Route_Detail">
+    <End Role="Route_Detail" Type="Self.Route_Detail" Multiplicity="1" />
+    <End Role="Booking_Detail" Type="Self.Booking_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route_Detail">
+        <PropertyRef Name="Route_ID" />
+      </Principal>
+      <Dependent Role="Booking_Detail">
+        <PropertyRef Name="Route_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_Detail_Seat_Detail">
+    <End Role="Seat_Detail" Type="Self.Seat_Detail" Multiplicity="1" />
+    <End Role="Booking_Detail" Type="Self.Booking_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seat_Detail">
+        <PropertyRef Name="Seat_ID" />
+      </Principal>
+      <Dependent Role="Booking_Detail">
+        <PropertyRef Name="Seat_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_Detail_Train_Info">
+    <End Role="Train_Info" Type="Self.Train_Info" Multiplicity="1" />
+    <End Role="Booking_Detail" Type="Self.Booking_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Train_Info">
+        <PropertyRef Name="Train_no" />
+      </Principal>
+      <Dependent Role="Booking_Detail">
+        <PropertyRef Name="Train_no" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_Detail_User_Info">
+    <End Role="User_Info" Type="Self.User_Info" Multiplicity="1" />
+    <End Role="Booking_Detail" Type="Self.Booking_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Info">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Booking_Detail">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Booking_Detail">
+    <End Role="Booking_Detail" Type="Self.Booking_Detail" Multiplicity="1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Booking_Detail">
+        <PropertyRef Name="Booking_ID" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="Booking_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coach_Info_Class">
+    <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+    <End Role="Coach_Info" Type="Self.Coach_Info" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Class_ID" />
+      </Principal>
+      <Dependent Role="Coach_Info">
+        <PropertyRef Name="Class_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fare_Detail_Coach_Classes">
+    <End Role="Class" Type="Self.Class" Multiplicity="1" />
+    <End Role="Fare_Detail" Type="Self.Fare_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Class_ID" />
+      </Principal>
+      <Dependent Role="Fare_Detail">
+        <PropertyRef Name="Class_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fare_Detail_Route_Detail">
+    <End Role="Route_Detail" Type="Self.Route_Detail" Multiplicity="1" />
+    <End Role="Fare_Detail" Type="Self.Fare_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route_Detail">
+        <PropertyRef Name="Route_ID" />
+      </Principal>
+      <Dependent Role="Fare_Detail">
+        <PropertyRef Name="Route_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fare_Detail_Train_Info">
+    <End Role="Train_Info" Type="Self.Train_Info" Multiplicity="1" />
+    <End Role="Fare_Detail" Type="Self.Fare_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Train_Info">
+        <PropertyRef Name="Train_no" />
+      </Principal>
+      <Dependent Role="Fare_Detail">
+        <PropertyRef Name="Train_no" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Login_User_Info">
+    <End Role="User_Info" Type="Self.User_Info" Multiplicity="1" />
+    <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User_Info">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Login">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Train_Route_Route_Detail">
+    <End Role="Route_Detail" Type="Self.Route_Detail" Multiplicity="1" />
+    <End Role="Train_Route" Type="Self.Train_Route" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route_Detail">
+        <PropertyRef Name="Route_ID" />
+      </Principal>
+      <Dependent Role="Train_Route">
+        <PropertyRef Name="Route_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schdule_Station_Detail">
+    <End Role="Station_Detail" Type="Self.Station_Detail" Multiplicity="1" />
+    <End Role="Schdule" Type="Self.Schdule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Station_Detail">
+        <PropertyRef Name="Station_ID" />
+      </Principal>
+      <Dependent Role="Schdule">
+        <PropertyRef Name="Station_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schdule_Train_Info">
+    <End Role="Train_Info" Type="Self.Train_Info" Multiplicity="1" />
+    <End Role="Schdule" Type="Self.Schdule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Train_Info">
+        <PropertyRef Name="Train_no" />
+      </Principal>
+      <Dependent Role="Schdule">
+        <PropertyRef Name="Train_no" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Train_Route_Train_Info">
+    <End Role="Train_Info" Type="Self.Train_Info" Multiplicity="1" />
+    <End Role="Train_Route" Type="Self.Train_Route" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Train_Info">
+        <PropertyRef Name="Train_no" />
+      </Principal>
+      <Dependent Role="Train_Route">
+        <PropertyRef Name="Train_no" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RRS_DB_Context" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Booking_Details" EntityType="Self.Booking_Detail" />
+    <EntitySet Name="Classes" EntityType="Self.Class" />
+    <EntitySet Name="Coach_Infoes" EntityType="Self.Coach_Info" />
+    <EntitySet Name="Fare_Details" EntityType="Self.Fare_Detail" />
+    <EntitySet Name="FeedBacks" EntityType="Self.FeedBack" />
+    <EntitySet Name="Logins" EntityType="Self.Login" />
+    <EntitySet Name="Payments" EntityType="Self.Payment" />
+    <EntitySet Name="Route_Details" EntityType="Self.Route_Detail" />
+    <EntitySet Name="Schdules" EntityType="Self.Schdule" />
+    <EntitySet Name="Seat_Details" EntityType="Self.Seat_Detail" />
+    <EntitySet Name="Station_Detail" EntityType="Self.Station_Detail" />
+    <EntitySet Name="Train_Infoes" EntityType="Self.Train_Info" />
+    <EntitySet Name="Train_Routes" EntityType="Self.Train_Route" />
+    <EntitySet Name="User_Infoes" EntityType="Self.User_Info" />
+    <AssociationSet Name="FK_Booking_Detail_Coach_Class" Association="Self.FK_Booking_Detail_Coach_Class">
+      <End Role="Coach_Info" EntitySet="Coach_Infoes" />
+      <End Role="Booking_Detail" EntitySet="Booking_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_Detail_Fare_Detail" Association="Self.FK_Booking_Detail_Fare_Detail">
+      <End Role="Fare_Detail" EntitySet="Fare_Details" />
+      <End Role="Booking_Detail" EntitySet="Booking_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_Detail_Route_Detail" Association="Self.FK_Booking_Detail_Route_Detail">
+      <End Role="Route_Detail" EntitySet="Route_Details" />
+      <End Role="Booking_Detail" EntitySet="Booking_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_Detail_Seat_Detail" Association="Self.FK_Booking_Detail_Seat_Detail">
+      <End Role="Seat_Detail" EntitySet="Seat_Details" />
+      <End Role="Booking_Detail" EntitySet="Booking_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_Detail_Train_Info" Association="Self.FK_Booking_Detail_Train_Info">
+      <End Role="Train_Info" EntitySet="Train_Infoes" />
+      <End Role="Booking_Detail" EntitySet="Booking_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_Detail_User_Info" Association="Self.FK_Booking_Detail_User_Info">
+      <End Role="User_Info" EntitySet="User_Infoes" />
+      <End Role="Booking_Detail" EntitySet="Booking_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Booking_Detail" Association="Self.FK_Payment_Booking_Detail">
+      <End Role="Booking_Detail" EntitySet="Booking_Details" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coach_Info_Class" Association="Self.FK_Coach_Info_Class">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Coach_Info" EntitySet="Coach_Infoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fare_Detail_Coach_Classes" Association="Self.FK_Fare_Detail_Coach_Classes">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Fare_Detail" EntitySet="Fare_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fare_Detail_Route_Detail" Association="Self.FK_Fare_Detail_Route_Detail">
+      <End Role="Route_Detail" EntitySet="Route_Details" />
+      <End Role="Fare_Detail" EntitySet="Fare_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fare_Detail_Train_Info" Association="Self.FK_Fare_Detail_Train_Info">
+      <End Role="Train_Info" EntitySet="Train_Infoes" />
+      <End Role="Fare_Detail" EntitySet="Fare_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Login_User_Info" Association="Self.FK_Login_User_Info">
+      <End Role="User_Info" EntitySet="User_Infoes" />
+      <End Role="Login" EntitySet="Logins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Train_Route_Route_Detail" Association="Self.FK_Train_Route_Route_Detail">
+      <End Role="Route_Detail" EntitySet="Route_Details" />
+      <End Role="Train_Route" EntitySet="Train_Routes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schdule_Station_Detail" Association="Self.FK_Schdule_Station_Detail">
+      <End Role="Station_Detail" EntitySet="Station_Detail" />
+      <End Role="Schdule" EntitySet="Schdules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schdule_Train_Info" Association="Self.FK_Schdule_Train_Info">
+      <End Role="Train_Info" EntitySet="Train_Infoes" />
+      <End Role="Schdule" EntitySet="Schdules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Train_Route_Train_Info" Association="Self.FK_Train_Route_Train_Info">
+      <End Role="Train_Info" EntitySet="Train_Infoes" />
+      <End Role="Train_Route" EntitySet="Train_Routes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

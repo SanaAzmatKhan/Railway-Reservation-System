@@ -1,0 +1,355 @@
+﻿@model Railway_Reservation_System.Models.Train_Info
+
+
+<!-- jQuery -->
+
+<script src="~/Files/js/jquery.min.js"></script>
+<!-- jQuery Easing -->
+<script src="~/Files/js/jquery.easing.1.3.js"></script>
+<!-- Bootstrap -->
+<script src="~/Files/js/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="~/Files/js/jquery.waypoints.min.js"></script>
+<script src="~/Files/js/sticky.js"></script>
+<!-- Stellar -->
+<script src="~/Files/js/jquery.stellar.min.js"></script>
+<!-- Superfish -->
+<script src="~/Files/js/hoverIntent.js"></script>
+<script src="~/Files/js/superfish.js"></script>
+<!-- Magnific Popup -->
+<script src="~/Files/js/jquery.magnific-popup.min.js"></script>
+<script src="~/Files/js/magnific-popup-options.js"></script>
+<!-- Date Picker -->
+<script src="~/Files/js/bootstrap-datepicker.min.js"></script>
+<!-- CS Select -->
+<script src="~/Files/js/classie.js"></script>
+<script src="~/Files/js/selectFx.js"></script>
+
+<!-- Main JS -->
+<script src="~/Files/js/main.js"></script>
+
+
+
+<div class="fh5co-hero">
+
+    <div class="fh5co-overlay"></div>
+    <div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url('../../Files/images/videoblocks-concept.png');">
+        <div class="desc">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5 col-md-5">
+                        <div class="tabulation animate-box" id="book">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#SearchTrain" aria-controls="SearchTrain" role="tab" data-toggle="tab">Search Train</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#CheckFare" aria-controls="CheckFare" role="tab" data-toggle="tab">Check Fare</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#TrainTime" aria-controls="TrainTime" role="tab" data-toggle="tab">Train Time</a>
+                                </li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+
+                                <!-- Start #SearchTrain pane -->
+
+
+                                <div role="tabpanel" class="tab-pane active" id="SearchTrain">
+                                    <div class="row">
+                                        <div class="col-sm-12 mt" style="margin-left:3%;">
+                                            <section>
+                                                <label for="class">From:</label>
+                                                <select id="drop1" class="form-control" style="color:coral !important;font-weight:bold;height:50px;">
+                                                    <option value="" disabled selected>Select City</option>
+                                                    <option value="Bahawalpur">Bahawalpur</option>
+                                                    <option value="Faisalabad">Faisalabad</option>
+                                                    <option value="Islamabad">Islamabad</option>
+                                                    <option value="Karachi">Karachi</option>
+                                                    <option value="Lahore">Lahore</option>
+                                                    <option value="Multan">Multan</option>
+                                                    <option value="Peshawar">Peshawar</option>
+                                                    <option value="Quetta">Quetta</option>
+                                                </select>
+                                            </section>
+                                        </div>
+                                        <div class="col-sm-12 mt" style="margin-left:3%;">
+                                            <section>
+                                                <label for="class">To:</label>
+                                                <select id="drop2" class="form-control" style="color:coral;font-weight:bold;height:50px;">
+                                                    <option value="" disabled selected>Select City</option>
+                                                    <option value="Bahawalpur">Bahawalpur</option>
+                                                    <option value="Lahore">Faisalabad</option>
+                                                    <option value="Faisalabad">Islamabad</option>
+                                                    <option value="Karachi">Karachi</option>
+                                                    <option value="Lahore">Lahore</option>
+                                                    <option value="Multan">Multan</option>
+                                                    <option value="Peshawar">Peshawar</option>
+                                                    <option value="Quetta">Quetta</option>
+                                                </select>
+                                            </section>
+                                        </div>
+
+                                        <div class="col-sm-12 mt" style="margin-left:3%;">
+                                            <div class="input-field">
+                                                <label for="date-end">Check In:</label>
+                                                <input type="text" class="form-control" style="color:coral;font-weight:bold;background-color:white;height:50px;width:82%" id="date-end" placeholder="mm/dd/yyyy" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 mt" style="margin:3%;">
+                                            <input type="submit" id="btn1" class="btn btn-primary btn-block" value="Search for a Train">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- End #SearchTrain pane -->
+                                <!-- Start #CheckFare pane -->
+
+                                <div role="tabpanel" class="tab-pane" id="CheckFare">
+                                    <div class="row">
+                                        <div class="col-sm-12 mt" style="margin-left:3%;">
+                                            <section>
+                                                <label for="class">From:</label>
+                                                <select id="drop3" class="form-control" style="color:coral !important;font-weight:bold;height:50px;">
+                                                    <option value="" disabled selected>Select City</option>
+                                                    <option value="Bahawalpur">Bahawalpur</option>
+                                                    <option value="Faisalabad">Faisalabad</option>
+                                                    <option value="Islamabad">Islamabad</option>
+                                                    <option value="Karachi">Karachi</option>
+                                                    <option value="Lahore">Lahore</option>
+                                                    <option value="Multan">Multan</option>
+                                                    <option value="Peshawar">Peshawar</option>
+                                                    <option value="Quetta">Quetta</option>
+                                                </select>
+                                            </section>
+                                        </div>
+                                        <div class="col-sm-12 mt" style="margin-left:3%;">
+                                            <section>
+                                                <label for="class">To:</label>
+                                                <select id="drop4" class="form-control" style="color:coral;font-weight:bold;height:50px;">
+                                                    <option value="" disabled selected>Select City</option>
+                                                    <option value="Bahawalpur">Bahawalpur</option>
+                                                    <option value="Lahore">Faisalabad</option>
+                                                    <option value="Faisalabad">Islamabad</option>
+                                                    <option value="Karachi">Karachi</option>
+                                                    <option value="Lahore">Lahore</option>
+                                                    <option value="Multan">Multan</option>
+                                                    <option value="Peshawar">Peshawar</option>
+                                                    <option value="Quetta">Quetta</option>
+                                                </select>
+                                            </section>
+                                        </div>
+
+                                        <div class="col-sm-12 mt" style="margin-left:3%;">
+                                            <section>
+                                                <label for="class">Train:</label>
+                                                <select id="drop5" class="form-control" style="color:coral;font-weight:bold;height:50px;">
+                                                    <option value="" disabled selected>Select Train</option>
+                                                </select>
+                                            </section>
+                                        </div>
+
+                                        <div class="col-xs-12 mt" style="margin:3%;">
+                                            <input type="submit" id="btn2" class="btn btn-primary btn-block" value="Get Fare">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- End #CheckFare pane -->
+                                <!-- Start #TrainTime pane -->
+
+                                <div role="tabpanel" class="tab-pane" id="TrainTime">
+                                    <div class="row">
+                                        <div class="col-sm-12 mt" style="margin-left:3%;">
+                                            <section>
+                                                <label for="class">Train:</label>
+                                                <select id="drop6" class="form-control" style="color:coral !important;font-weight:bold;height:50px;">
+                                                    <option value="" disabled selected>Select Train</option>
+                                                </select>
+
+
+
+
+                                            </section>
+                                        </div>
+                                        <div class="col-sm-12 mt" style="margin-left:3%;">
+                                            <section>
+                                                <label for="class">Day:</label>
+                                                <select id="drop7" class="form-control" style="color:coral;font-weight:bold;height:50px;">
+                                                    <option value="" disabled selected>Select Day</option>
+                                                    <option value="Monday">Monday</option>
+                                                    <option value="Tuesday">Tuesday</option>
+                                                    <option value="Wednesday">Wednesday</option>
+                                                    <option value="Thursday">Thursday</option>
+                                                    <option value="Friday">Friday</option>
+                                                    <option value="Saturday">Saturday</option>
+                                                    <option value="Sunday">Sunday</option>
+                                                </select>
+                                            </section>
+                                        </div>
+
+                                        <div class="col-sm-12 mt" style="margin-left:3%;">
+                                            <div class="input-field">
+                                                <label for="date-end">Check In:</label>
+                                                <input type="text" class="form-control" style="color:coral;font-weight:bold;background-color:white;height:50px;width:82%" id="date-end" placeholder="mm/dd/yyyy" />
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="col-xs-12 mt" style="margin:3%;">
+                                            <input type="submit" id="btn3" class="btn btn-primary btn-block" value="Search Timings ">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- End #TrainTime pane -->
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="desc2 animate-box">
+                        <div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
+                            <p> <a href="#" target="_blank" class="fh5co-site-name">Call Us:090078601</a></p>
+                            <h2>Online Railway Reservation System</h2>
+                            <h3>Your Comfort is Our Priority!</h3>
+
+                            <!-- <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- #SearchTrain Script -->
+<script>
+
+    $(document).ready(function () {
+
+        $('#drop1').on("change", function () {
+            var from = $('#drop1').val();
+
+            $('#drop2').html('');
+            var option = '';
+            option += '<select>';
+            option += '<option value="Select City">Select City</option>';
+            $.post('/RRS/getData', { city: from }, function (response) {
+
+                $.each(response, function (i, j) {
+
+                    option += '<option value="' + j + '"> ' + j + ' </option>';
+
+                });
+                option += '</select>';
+                $('#drop2').html(option);
+
+            });
+        });
+    });
+
+    </script>
+<script>
+    $(document).ready(function () {
+
+        $('#btn1').click(function () {
+
+            var route_frommm = $('#drop1').val();
+            var route_to = $('#drop2').val();
+            var option = '';
+            option += '<select>';
+            $.post('/RRS/checkfair', { from: route_frommm, to: route_to }, function (data) {
+
+                $.each(data, function (i, j) {
+
+                    $('#fh5co-car').html(option);
+
+                });
+                $('#fh5co-car').html(option);
+        });
+
+    });
+
+</script>
+
+                                                                        <!--  #CheckFare Script -->
+
+<script>
+    $(document).ready(function () {
+
+        $('#drop3').on("change", function () {
+            var from = $('#drop3').val();
+
+            $('#drop4').html('');
+            var option = '';
+            option += '<select>';
+            option += '<option value="Select City">Select City</option>';
+            $.post('/RRS/getData', { city: from }, function (response) {
+
+                $.each(response, function (i, j) {
+
+                    option += '<option value="' + j + '"> ' + j + ' </option>';
+
+                });
+                option += '</select>';
+                $('#drop4').html(option);
+
+            });
+        });
+    });
+        </script>
+<script>
+
+    $(document).ready(function () {
+        $('#drop4').on('change', function () {
+
+
+            var route_frommm = $('#drop3').val();
+            var route_to = $('#drop4').val();
+            $('#drop5').html('');
+            var option = '';
+            option += '<select>';
+            option += '<option value="Select Train">Select Train</option>';
+            $.post('/RRS/checkfair', { from: route_frommm, to: route_to }, function (data) {
+
+                $.each(data, function (i, j) {
+
+                    option += '<option value="' + j + '"> ' + j + ' </option>';
+
+                });
+                option += '</select>';
+                $('#drop5').html(option);
+            });
+        });
+    });
+
+</script>
+
+
+                                                    <!--  #TrainTime Script -->
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/RRS/getTrain",
+            data: "{}",
+            success: function (data) {
+                var train = '<option value="-1">Select Train</option>';
+                for (var i = 0; i < data.length; i++) {
+                    train += '<option value="' + data[i].Train_no + '">' + data[i].Train_name + '</option>';
+                }
+                $("#drop6").html(train);
+            }
+        });
+    });
+
+</script>
+
+
+

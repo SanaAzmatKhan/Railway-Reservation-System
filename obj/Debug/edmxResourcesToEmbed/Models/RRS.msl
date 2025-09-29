@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="RRS_DB_Context">
+    <EntitySetMapping Name="Booking_Details">
+      <EntityTypeMapping TypeName="Model.Booking_Detail">
+        <MappingFragment StoreEntitySet="Booking Detail">
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Seat_ID" ColumnName="Seat_ID" />
+          <ScalarProperty Name="No_of_seats" ColumnName="No_of_seats" />
+          <ScalarProperty Name="Route_ID" ColumnName="Route_ID" />
+          <ScalarProperty Name="Booking_Date" ColumnName="Booking_Date" />
+          <ScalarProperty Name="Departure_Date" ColumnName="Departure_Date" />
+          <ScalarProperty Name="Ticket_no" ColumnName="Ticket_no" />
+          <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+          <ScalarProperty Name="Train_no" ColumnName="Train_no" />
+          <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
+          <ScalarProperty Name="Fare_ID" ColumnName="Fare_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="Model.Class">
+        <MappingFragment StoreEntitySet="Class">
+          <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+          <ScalarProperty Name="Class_Name" ColumnName="Class_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Coach_Infoes">
+      <EntityTypeMapping TypeName="Model.Coach_Info">
+        <MappingFragment StoreEntitySet="Coach Info">
+          <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+          <ScalarProperty Name="Coach_Name" ColumnName="Coach_Name" />
+          <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fare_Details">
+      <EntityTypeMapping TypeName="Model.Fare_Detail">
+        <MappingFragment StoreEntitySet="Fare Detail">
+          <ScalarProperty Name="Route_ID" ColumnName="Route_ID" />
+          <ScalarProperty Name="Train_no" ColumnName="Train_no" />
+          <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+          <ScalarProperty Name="Fare" ColumnName="Fare" />
+          <ScalarProperty Name="Cancel_per" ColumnName="Cancel_per" />
+          <ScalarProperty Name="Fare_ID" ColumnName="Fare_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeedBacks">
+      <EntityTypeMapping TypeName="Model.FeedBack">
+        <MappingFragment StoreEntitySet="FeedBack">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logins">
+      <EntityTypeMapping TypeName="Model.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="Model.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Atm_card_no" ColumnName="Atm_card_no" />
+          <ScalarProperty Name="PNR_no" ColumnName="PNR_no" />
+          <ScalarProperty Name="Payment_ID" ColumnName="Payment_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Route_Details">
+      <EntityTypeMapping TypeName="Model.Route_Detail">
+        <MappingFragment StoreEntitySet="Route Detail">
+          <ScalarProperty Name="Route_ID" ColumnName="Route_ID" />
+          <ScalarProperty Name="Route_from" ColumnName="Route_from" />
+          <ScalarProperty Name="Route_To" ColumnName="Route_To" />
+          <ScalarProperty Name="Distance__Km_" ColumnName="Distance_(Km)" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schdules">
+      <EntityTypeMapping TypeName="Model.Schdule">
+        <MappingFragment StoreEntitySet="Schdule">
+          <ScalarProperty Name="Train_no" ColumnName="Train_no" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Days" ColumnName="Days" />
+          <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seat_Details">
+      <EntityTypeMapping TypeName="Model.Seat_Detail">
+        <MappingFragment StoreEntitySet="Seat Detail">
+          <ScalarProperty Name="Seat_ID" ColumnName="Seat_ID" />
+          <ScalarProperty Name="Seat_Name" ColumnName="Seat_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Station_Detail">
+      <EntityTypeMapping TypeName="Model.Station_Detail">
+        <MappingFragment StoreEntitySet="Station_Detail">
+          <ScalarProperty Name="Station_ID" ColumnName="Station_ID" />
+          <ScalarProperty Name="Station_Name" ColumnName="Station_Name" />
+          <ScalarProperty Name="Station_Code" ColumnName="Station_Code" />
+          <ScalarProperty Name="Railway_Division" ColumnName="Railway_Division" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Train_Infoes">
+      <EntityTypeMapping TypeName="Model.Train_Info">
+        <MappingFragment StoreEntitySet="Train Info">
+          <ScalarProperty Name="Train_no" ColumnName="Train_no" />
+          <ScalarProperty Name="Train_name" ColumnName="Train_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Train_Routes">
+      <EntityTypeMapping TypeName="Model.Train_Route">
+        <MappingFragment StoreEntitySet="Train Route">
+          <ScalarProperty Name="Train_no" ColumnName="Train_no" />
+          <ScalarProperty Name="Route_ID" ColumnName="Route_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Infoes">
+      <EntityTypeMapping TypeName="Model.User_Info">
+        <MappingFragment StoreEntitySet="User Info">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

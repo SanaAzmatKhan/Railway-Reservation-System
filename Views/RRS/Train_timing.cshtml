@@ -1,0 +1,40 @@
+﻿@model List<Railway_Reservation_System.Models.Schdule>
+
+@{
+    ViewBag.Title = "Train_timing";
+}
+
+<div id="fh5co-car" class="fh5co-section-gray">
+    <div class="container">
+
+        @* @Html.DropDownList("Train_no", (IEnumerable<SelectListItem>)ViewBag.Train_no, "Select Train")
+       
+
+        <table class="table table-responsive table-hover table-condensed">
+
+            <tr>
+                <th>Serial No.</th>
+                <th>Train</th>
+                <th>Station</th>
+                <th>Arrival Time</th>
+                <th>Departure Time</th>
+                <th>Days</th>
+            </tr>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.Train_Info.Train_name</td>
+                    <td>@item.Station_Detail.Station_Name</td>
+                    <td>@item.Arrival_Time</td>
+                    <td>@item.Departure_Time</td>
+                    <td>@item.Days</td>
+                </tr>
+            }
+        </table>
+        *@
+
+    </div>
+</div>
